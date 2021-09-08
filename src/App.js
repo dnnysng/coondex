@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import CoonCard from './Components/CoonCard'
 
 function App() {
+  const [query, setQuery] = useState('')
+  const [coon, setCoon] = useState('')
+
+  const searchCoon = async (e) => {
+    e.preventDefault();
+
+    const url = `https://gateway.ipfs.io/ipfs/QmZRgokt2eqMgA3691wzCWuRY4FQAMT1ZiRrJ1yctfNo4z/${query}`
+
+    try {
+      const res = await fetch(url)
+      const data = await res.json();
+      setCoon(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="" className="form" onSubmit={searchCoon}>
+        <input
+          type="text"
+          className="input"
+          name="query"
+          placeholder="Enter ID here..."
+          value={query} onChange={(e) => setQuery(e.target.value)}
+        />
+        <button className="button" type="submit">Submit</button>
+      </form>
+      {coon.image && true ? (
+        <CoonCard
+          image={coon.image.replace("ipfs://", "")}
+          attributes={coon.attributes}
+        />
+      ) : ""}
     </div>
   );
 }
