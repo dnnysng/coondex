@@ -8,15 +8,22 @@ function App() {
   const searchCoon = async (e) => {
     e.preventDefault();
 
-    const url = `https://gateway.ipfs.io/ipfs/QmZRgokt2eqMgA3691wzCWuRY4FQAMT1ZiRrJ1yctfNo4z/${query}`
+    if (parseInt(query) < 0) {
+      alert('Why you even try this? 😂')
+    } else if (parseInt(query) > 10000) {
+      alert(`Bruh, there's only 10,000 try again. 😂`)
+    } else {
+      const url = `https://gateway.ipfs.io/ipfs/QmZRgokt2eqMgA3691wzCWuRY4FQAMT1ZiRrJ1yctfNo4z/${query % 10 === 3 ? parseInt(query) + 10000 : query}`
 
-    try {
-      const res = await fetch(url)
-      const data = await res.json();
-      setCoon(data)
-    } catch (err) {
-      console.error(err)
+      try {
+        const res = await fetch(url)
+        const data = await res.json();
+        setCoon(data)
+      } catch (err) {
+        console.error(err)
+      }
     }
+
   }
 
   return (
@@ -27,7 +34,8 @@ function App() {
           className="input"
           name="query"
           placeholder="Enter ID here..."
-          value={query} onChange={(e) => setQuery(e.target.value)}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <button className="button" type="submit">Submit</button>
       </form>
