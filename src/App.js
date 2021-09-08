@@ -37,7 +37,7 @@ function App() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="button" type="submit">Submit</button>
+        <button className="button" type="submit">Search</button>
       </form>
       {coon.image && true ? (
         <CoonCard
