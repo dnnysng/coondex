@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const CoonCard = (props) => {
-    const image = props.image
+    const coonImage = props.coonImage
+    const zombieImage = props.zombieImage
     const traits = props.attributes
+    const [count, setCount] = useState(0)
+    function increase() {
+        setCount(prevCount => prevCount + 1)
+        console.log(count)
+    }
 
     return (
-        <div>
-            <img src={`https://gateway.ipfs.io/ipfs/${image}`} alt="" />
+        <div onClick={increase} className="card">
+            {count % 2 === 0 ?
+                <img src={`https://gateway.ipfs.io/ipfs/${zombieImage}`} alt="" /> :
+                <img src={`https://gateway.ipfs.io/ipfs/${coonImage}`} alt="" />
+            }
             <div className="traits">
                 <ul className="trait-list">
                     {traits.map(trait => {

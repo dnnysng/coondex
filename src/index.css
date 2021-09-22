@@ -18,6 +18,8 @@ code {
 
 img {
     max-width: 310px;
+    border-radius: 50px;
+    margin: 1rem;
 }
 
 .app {
@@ -58,4 +60,9 @@ img {
 
 .trait-list {
     font-size: 14px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
 }
