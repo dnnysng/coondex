@@ -15,7 +15,7 @@ This web application allows a user to see the original NFT image of their raccoo
 
 ## Screenshot
 
-![Screenshot](https://i.ibb.co/wdcdXY2/Screen-Shot-2022-02-15-at-1-52-44-PM.png)
+![Screenshot](https://i.ibb.co/fF627Zx/Screen-Shot-2022-02-15-at-3-14-03-PM.png)
 
 ## Demo
 
