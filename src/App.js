@@ -37,7 +37,8 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
+      <h1>The Coondex</h1>
       <form action="" className="form" onSubmit={searchCoon}>
         <input
           type="text"
